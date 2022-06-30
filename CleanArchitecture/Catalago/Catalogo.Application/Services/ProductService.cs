@@ -30,22 +30,25 @@ namespace Catalogo.Application.Interfaces
             return _mapper.Map<ProductDTO>(productEntity);
         }
 
-        public async Task CreateAsync(ProductDTO product)
+        public async Task<ProductDTO> CreateAsync(ProductDTO product)
         {
             var productEntity = _mapper.Map<Product>(product);
-            await _productRepository.CreateAsync(productEntity);
+            var productDTO = _mapper.Map<ProductDTO>(await _productRepository.CreateAsync(productEntity));
+            return productDTO;
         }
 
-        public async Task UpdateAsync(ProductDTO product)
+        public async Task<ProductDTO> UpdateAsync(ProductDTO product)
         {
             var productEntity = _mapper.Map<Product>(product);
-            await _productRepository.UpdateAsync(productEntity);
+            var productDTO = _mapper.Map<ProductDTO>(await _productRepository.UpdateAsync(productEntity));
+            return productDTO;
         }
 
-        public async Task DeleteAsync(int? id)
+        public async Task<ProductDTO> DeleteAsync(int? id)
         {
             var productEntity = await _productRepository.GetByIdAsync(id);
-            await _productRepository.DeleteAsync(productEntity);
+            var productDTO = _mapper.Map<ProductDTO>(await _productRepository.DeleteAsync(productEntity));
+            return productDTO;
         }
     }
 }

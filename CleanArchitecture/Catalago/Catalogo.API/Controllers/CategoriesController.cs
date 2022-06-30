@@ -44,7 +44,7 @@ namespace Catalogo.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            await _categoryService.CreateAsync(categoryDTO);
+            categoryDTO = await _categoryService.CreateAsync(categoryDTO);
 
             return new CreatedAtRouteResult("GetCategory", new { id = categoryDTO.Id }, categoryDTO);
         }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Catalogo.Domain.Entities;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Catalogo.Application.DTOs
@@ -34,5 +35,6 @@ namespace Catalogo.Application.DTOs
         public DateTime DateCreated { get; set; }
 
         public int CategoryId { get; set; }
+        public Category? Category { get; set; }
     }
 }

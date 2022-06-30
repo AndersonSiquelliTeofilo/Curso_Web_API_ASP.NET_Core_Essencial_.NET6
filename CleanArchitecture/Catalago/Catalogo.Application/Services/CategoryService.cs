@@ -31,22 +31,25 @@ namespace Catalogo.Application.Services
             return _mapper.Map<CategoryDTO>(categoryEntity);
         }
 
-        public async Task CreateAsync(CategoryDTO category)
+        public async Task<CategoryDTO> CreateAsync(CategoryDTO category)
         {
             var categoryEntity = _mapper.Map<Category>(category);
-            await _categoryRepository.CreateAsync(categoryEntity);
+            var categoryDTO = _mapper.Map<CategoryDTO>(await _categoryRepository.CreateAsync(categoryEntity));
+            return categoryDTO;
         }
 
-        public async Task UpdateAsync(CategoryDTO category)
+        public async Task<CategoryDTO> UpdateAsync(CategoryDTO category)
         {
             var categoryEntity = _mapper.Map<Category>(category);
-            await _categoryRepository.UpdateAsync(categoryEntity);
+            var categoryDTO = _mapper.Map<CategoryDTO>(await _categoryRepository.UpdateAsync(categoryEntity));
+            return categoryDTO;
         }
 
-        public async Task DeleteAsync(int? id)
+        public async Task<CategoryDTO> DeleteAsync(int? id)
         {
             var categoryEntity = _categoryRepository.GetByIdAsync(id).Result;
-            await _categoryRepository.DeleteAsync(categoryEntity);
+            var categoryDTO = _mapper.Map<CategoryDTO>(await _categoryRepository.DeleteAsync(categoryEntity));
+            return categoryDTO;
         }
     }
 }

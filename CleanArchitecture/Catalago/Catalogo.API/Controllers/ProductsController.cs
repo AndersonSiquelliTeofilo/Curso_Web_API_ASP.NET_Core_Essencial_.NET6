@@ -44,7 +44,7 @@ namespace Catalogo.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            await _productService.CreateAsync(productDTO);
+            productDTO = await _productService.CreateAsync(productDTO);
 
             return new CreatedAtRouteResult("GetProduct", new { id = productDTO.Id }, productDTO);
         }

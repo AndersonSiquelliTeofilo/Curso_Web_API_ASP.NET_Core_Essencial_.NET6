@@ -6,8 +6,8 @@ namespace Catalogo.Application.Interfaces
     {
         Task<IEnumerable<CategoryDTO>> GetCategoriesAsync();
         Task<CategoryDTO> GetByIdAsync(int? id);
-        Task CreateAsync(CategoryDTO category);
-        Task UpdateAsync(CategoryDTO category);
-        Task DeleteAsync(int? id);
+        Task<CategoryDTO> CreateAsync(CategoryDTO category);
+        Task<CategoryDTO> UpdateAsync(CategoryDTO category);
+        Task<CategoryDTO> DeleteAsync(int? id);
     }
 }

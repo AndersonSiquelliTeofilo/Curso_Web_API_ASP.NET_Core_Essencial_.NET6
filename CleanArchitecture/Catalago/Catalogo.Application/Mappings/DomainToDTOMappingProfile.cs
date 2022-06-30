@@ -8,8 +8,13 @@ namespace Catalogo.Application.Mappings
     {
         public DomainToDTOMappingProfile()
         {
-            CreateMap<Category, CategoryDTO>().ReverseMap();
-            CreateMap<Product, ProductDTO>().ReverseMap();
+            CreateMap<Category, CategoryDTO>()
+                .ReverseMap();
+
+            CreateMap<Product, ProductDTO>()
+                .IncludeAllDerived();
+
+            CreateMap<ProductDTO, Product>();
         }
     }
 }
